@@ -1,0 +1,34 @@
+---
+# This playbook that deploys the roles 
+- name: apply common Configuration to all hosts
+  hosts: all
+  remote_user:  ansible 
+  become: yes
+
+  roles: 
+    - common 
+  
+- name: Install httpd, git repo and start the services
+  hosts:  webservers
+  remote_user:  ansible
+  become: yes
+
+  roles:  
+    - webserver 
+
+- name: install mariadb, create a database and start mariadb 
+  hosts:  dbservers
+  remote_user:  ansible
+  become: yes 
+
+  roles:  
+    - dbserver
+
+- name: install, configure and start haproxy load balancer
+  hosts:  lbservers
+  remote_user: ansible
+  become: yes
+
+  roles:
+    - lbserver
+    

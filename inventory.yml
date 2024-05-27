@@ -1,0 +1,17 @@
+all:
+  children:
+    webservers:
+      hosts:
+        webserver1:
+          ansible_host: 192.168.165.130
+        webserver2:
+          ansible_host: 192.168.165.140
+    dbservers:
+      hosts:
+        dbserver:
+          ansible_host: fer-db001-133.ziyotek.local
+    lbservers:
+      hosts:
+        lbserver:
+          ansible_host: fer-load001-135.ziyotek.local
+

@@ -1,0 +1,36 @@
+---
+web_servers:
+  - fer-web001-130.ziyotek.local
+  - fer-server001-140.ziyotek.local
+
+db_server: fer-db001-133.ziyotek.local
+db_name: webapp_db
+db_user: webapp_user
+db_password: secure_password
+
+haproxy_cfg: /etc/haproxy/haproxy.cfg
+
+web_app_dir: /var/www/html
+git_repo: https://github.com/kubowania/space-invaders.git
+
+system_users:
+  - name: webadmin
+    uid: 1178
+    shell: /bin/bash
+    password: "{{ 'password' | password_hash('sha512') }}"
+
+dns_records:
+  - name: fer-web001-130.ziyotek.local
+    address: 192.168.165.130
+  - name: fer-server001-140.ziyotek.local
+    address: 192.168.165.140
+
+ulimits:
+  - domain: "*"
+    type: "hard"
+    item: "nofile"
+    value: 65536
+  - domain: "*"
+    type: "soft"
+    item: "nofile"
+    value: 65536

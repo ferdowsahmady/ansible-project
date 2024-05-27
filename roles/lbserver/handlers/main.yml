@@ -1,0 +1,6 @@
+---
+- name: "Start and enable HAProxy"
+  service:
+    name: haproxy
+    state: started
+    enabled: yes
